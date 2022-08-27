@@ -1,0 +1,93 @@
+package com.hbt.semillero.test;
+
+import static org.junit.Assert.assertEquals;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+
+import org.junit.Test;
+
+import com.hbt.semillero.entity.Comic;
+import com.hbt.semillero.enums.EstadoEnum;
+import com.hbt.semillero.enums.TematicaEnum;
+
+public class CreacionComicTest {
+	
+	/**
+	 * Se crean los 10 comics con ayuda del constructor del tipo Comic
+	 */
+	Comic comic1 = new Comic("A-Force", "Marvel", TematicaEnum.FANTASTICO, "Marvel Comics", 18, (short)1500, "Marguerite Bennett", true, LocalDate.of(2015,7,8), EstadoEnum.INACTIVO, (short)6);
+	Comic comic2 = new Comic("2099 Special: The World of Doom", "Marvel", TematicaEnum.HORROR, "Marvel Comics", 20, (short)7500, "Joey Cavalieri", true, LocalDate.of(1995,1,1), EstadoEnum.INACTIVO, (short)9);
+	Comic comic3 = new Comic("Conan the Barbarian: The Original Marvel Years Omnibus", "Marvel", TematicaEnum.AVENTURAS, "Marvel Comics", 17, (short)4600, "Roy Thomas, Jhon Buscema", true, LocalDate.of(2018,6,10), EstadoEnum.ACTIVO, (short)9);
+	Comic comic4 = new Comic("Dr. Strange vs. Dracula", "Marvel", TematicaEnum.FANTASTICO, "Marvel Comics", 21, (short)8000, "Marv Wolfman", true, LocalDate.of(1994,4,9), EstadoEnum.INACTIVO, (short)3);
+	Comic comic5 = new Comic("Drax the Destroyer", "Marvel", TematicaEnum.AVENTURAS, "Marvel Comics", 16, (short)2500, "Arthur Douglas", true, LocalDate.of(2005,11,4), EstadoEnum.INACTIVO, (short)5);
+	Comic comic6 = new Comic("Earthworm Jim", "Marvel", TematicaEnum.HUMORISTICO, "Marvel Comics", 14, (short)1500, "Doug TenNapel", true, LocalDate.of(1995,12,11), EstadoEnum.INACTIVO, (short)8);
+	Comic comic7 = new Comic("Iron Patriot", "Marvel", TematicaEnum.BELICO, "Marvel Comics", 17, (short)1000, "Brian Michael Bendis", true, LocalDate.of(2014,4,5), EstadoEnum.INACTIVO, (short)11);
+	Comic comic8 = new Comic("Laugh Parade", "Marvel", TematicaEnum.HUMORISTICO, "Marvel Comics", 10, (short)700, "Bunny Hoest", true, LocalDate.of(1961,9,8), EstadoEnum.INACTIVO, (short)10);
+	Comic comic9 = new Comic("Valkyrie: Jane Foster", "Marvel", TematicaEnum.FANTASTICO, "Marvel Comics", 21, (short)1500, "Jason Aaron, Al Ewing, Cafu", true, LocalDate.of(2019,1,8), EstadoEnum.ACTIVO, (short)7);
+	Comic comic10 = new Comic("Rolling Stones- Voodoo Lounge","Marvel", TematicaEnum.HISTORICO, "Marvel Comics", 15, (short)2000, "Mort Todd, Karl Bollers", true, LocalDate.of(1995,9,3), EstadoEnum.INACTIVO, (short)6);
+	
+	/**
+	 * 
+	 * Metodo encargado de recorrer una lista de Comics y verificar el estado Activo en cada comic
+	 * Y en caso de estar activo lo enlista en la variable comicsActvs 
+	 * <b>SemilleroHbt</b>
+	 * @author Numael Limas
+	 * 
+	 * @param comics
+	 * @return
+	 */
+	private ArrayList<Comic> comicsAct(ArrayList<Comic> comics ) {
+		ArrayList<Comic> comicsActvs=new ArrayList<Comic>();
+		for(Comic comic:comics) {
+			if (EstadoEnum.ACTIVO.equals(comic.getEstado())) {
+				comicsActvs.add(comic);
+			}
+		}
+		return comicsActvs;
+	}
+	
+	
+	/**
+	 * 
+	 * Metodo encargado de recorrer una lista de Comics y verificar el estado Inactivo en cada comic
+	 * Y en caso de estar Inactivo lo enlista en la variable comicsInacts 
+	 * <b>SemilleroHbt</b>
+	 * @author Numael Limas
+	 * 
+	 * @param comics
+	 * @return
+	 */
+	private ArrayList<Comic> comicsInact(ArrayList<Comic> comics ) {
+		ArrayList<Comic> comicsInacts=new ArrayList<Comic>();
+		for(Comic comic:comics) {
+			if (EstadoEnum.INACTIVO.equals(comic.getEstado())) {
+				comicsInacts.add(comic);
+			}
+		}
+		return comicsInacts;
+	}
+	
+	@Test
+	public void GivenListaDeComicsWhenListoEstadoActivasThenOk(){
+		ArrayList<Comic> comics = new ArrayList<Comic>();
+		comics.add(comic1);
+		comics.add(comic2);
+		comics.add(comic3);
+		comics.add(comic4);
+		comics.add(comic5);
+		comics.add(comic6);
+		comics.add(comic7);
+		comics.add(comic8);
+		comics.add(comic9);
+		comics.add(comic10);
+		ArrayList<Comic> listaComicsAct =comicsAct(comics);
+		for (Comic comic:listaComicsAct) {
+			System.out.print(comic);
+			assertEquals(EstadoEnum.ACTIVO,comic.getEstado());
+		}
+	}
+	
+	
+	
+}
