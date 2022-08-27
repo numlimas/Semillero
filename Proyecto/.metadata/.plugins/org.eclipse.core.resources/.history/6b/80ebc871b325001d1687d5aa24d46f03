@@ -1,0 +1,141 @@
+package com.hbt.semillero.entity;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import com.hbt.semillero.enums.EstadoEnum;
+import com.hbt.semillero.enums.TematicaEnum;
+
+/**
+ * 
+ * <b>Descripción:<b> Clase marca los nombres de las columnas en la tabla de la 
+ * BD y sus respectivas variables en Java
+ * <b>Caso de Uso: Semillero2022<b> 
+ * @author Numael Limas
+ * @version 1
+ */
+
+@Entity
+@Table(name="COMIC")
+public class Comic implements Serializable{
+	
+	/**
+	 * Atributo que determina numero para transferencia de informacion a BD  
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * Llave primaria
+	 * Columna en DB: SCID
+	 * Nombre de variable: id
+	 */
+	@Id
+	@Column(name="SCID")
+	@SequenceGenerator(allocationSize=1, name="COMIC_SCID_GENERATOR",sequenceName="SEQ_COMIC")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="COMIC_SCID_GENERATOR")
+	private Long id;
+	
+	/**
+	 * Columna en DB: SCNOMBRE
+	 * Nombre de variable: nombre
+	 */
+	@Column(name="SCNOMBRE")
+	private String nombre;
+	
+	/**
+	 * Columna en DB: SCEDITORIAL
+	 * Nombre de variable: editorial
+	 */
+	@Column(name="SCEDITORIAL")
+	private String editorial;
+	
+	/**
+	 * Columna en DB: SCTEMATICA
+	 * Nombre de variable: tematica
+	 * Se usa TematicaEnum para obtener las tematicas disponibles
+	 */
+	@Column(name="SCTEMATICA")
+	private TematicaEnum tematica;
+	
+	/**
+	 * Columna en DB: SCCOLECCION
+	 * Nombre de variable: coleccion
+	 */
+	@Column(name="SCCOLECCION")
+	private String coleccion;
+	
+	/**
+	 * Columna en DB: SCNUMEROPAGINAS
+	 * Nombre de variable: numeroPag
+	 */
+	@Column(name="SCNUMEROPAGINAS")
+	private Integer numeroPag;
+	
+	/**
+	 * Columna en DB: SCPRECIO
+	 * Nombre de variable: precio
+	 */
+	@Column(name="SCPRECIO")
+	private Short precio;
+	
+	/**
+	 * Columna en DB: SCAUTORES
+	 * Nombre de variable: autores
+	 */
+	@Column(name="SCAUTORES")
+	private String autores;
+	
+	/**
+	 * Columna en DB: SCCOLOR
+	 * Nombre de variable: color
+	 */
+	@Column(name="SCCOLOR")
+	private Boolean color;
+	
+	/**
+	 * Columna en DB: SCFECHA_VENTA
+	 * Nombre de variable: fechaVenta
+	 */
+	@Column(name="SCFECHA_VENTA")
+	private LocalDate fechaVenta;
+	
+	/**
+	 * Columna en DB: SCESTADO
+	 * Nombre de variable: estado
+	 * Se usa EstadoEnum para obtener los diferentes estados de los comics
+	 */
+	@Column(name="SCESTADO")
+	private EstadoEnum estado;
+	
+	/**
+	 * Columna en DB: SCCANTIDAD
+	 * Nombre de variable: cantidad
+	 */
+	@Column(name="SCCANTIDAD")
+	private Short cantidad;
+	
+	public Comic() {
+		LocalDate fechaVenta = LocalDate.of(2022,8,8);
+		
+	}
+
+	@Override
+	public String toString() {
+		return "Comic [id=" + id + ", nombre=" + nombre + ", editorial=" + editorial + ", tematica=" + tematica
+				+ ", coleccion=" + coleccion + ", numeroPag=" + numeroPag + ", precio=" + precio + ", autores="
+				+ autores + ", color=" + color + ", fechaVenta=" + fechaVenta + ", estado=" + estado + ", cantidad="
+				+ cantidad + "]";
+	}
+	
+	
+	
+	
+}

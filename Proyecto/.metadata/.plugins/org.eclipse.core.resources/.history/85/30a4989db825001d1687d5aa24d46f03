@@ -1,0 +1,12 @@
+package com.hbt.semillero.test;
+
+import java.time.LocalDate;
+
+import com.hbt.semillero.entity.Comic;
+import com.hbt.semillero.enums.EstadoEnum;
+import com.hbt.semillero.enums.TematicaEnum;
+
+public class CreacionComicTest {
+	Comic comic1 = new Comic("A-Force", "Marvel", TematicaEnum.FANTASTICO, "Marvel Comics", 18, (short)1500, "Marguerite Bennett", true, LocalDate.of(2022,9,8), EstadoEnum.ACTIVO, (short)6);
+	Comic comic2 = new Comic("A-Force", "Marvel", TematicaEnum.FANTASTICO, "Marvel Comics", 18, (short)1500, "Marguerite Bennett", true, LocalDate.of(2022,9,8), EstadoEnum.ACTIVO, (short)6);
+}
