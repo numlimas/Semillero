@@ -1,0 +1,5 @@
+package com.hbt.semillero.entity;
+
+public class Comic {
+
+}

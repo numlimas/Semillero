@@ -1,0 +1,5 @@
+package com.hbt.semillero.servicios.rest;
+
+public class SemilleroJPQLRest {
+
+}
